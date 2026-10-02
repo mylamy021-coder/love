@@ -1,0 +1,64 @@
+:root{
+  --paper:#f2e9dd;
+  --ink:#8c1d2c;
+  --ink-soft:#a8434f;
+  --shadow:rgba(60,35,20,.28);
+  --script:'Yellowtail','Hind Siliguri',cursive;
+  --body:'Poppins','Hind Siliguri',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg,rgba(120,90,60,.035) 0 1px,transparent 1px 3px),
+    repeating-linear-gradient(90deg,rgba(120,90,60,.035) 0 1px,transparent 1px 3px);
+  color:var(--ink);
+  font-family:var(--body);
+  line-height:2;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+/* slow entrance: everything fades in gradually */
+body:not(.ready) #decor,
+body:not(.ready) #page{opacity:0}
+#decor,#page{transition:opacity 3.2s ease}
+body.ready #decor,body.ready #page{opacity:1}
+body.ready .hero > *{animation:rise 2.8s ease both}
+body.ready .hero > :nth-child(2){animation-delay:.6s}
+body.ready .hero > :nth-child(3){animation-delay:1.2s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+#decor{position:absolute;inset:0;height:100%;pointer-events:none;z-index:0}
+#decor img{
+  position:absolute;
+  box-shadow:0 8px 18px var(--shadow);
+  background:#fff;
+}
+#decor img.polaroid{padding:8px 8px 8px;}
+#page{position:relative;z-index:1}
+
+.hero{text-align:center;padding:12vh 1.5rem 8vh}
+#credit{font-size:.9rem;line-height:1.7}
+#title{
+  font-family:var(--script);font-weight:400;
+  font-size:clamp(3rem,9vw,6rem);line-height:1.15;
+  margin:2.2rem auto 1.4rem;max-width:11em;
+}
+#subtitle{font-weight:600;font-size:.95rem;letter-spacing:.04em}
+
+#letters{max-width:640px;margin:0 auto;padding:6vh 1.5rem 14vh}
+.letter{margin-bottom:12vh}
+.letter .place,.letter .date{font-style:italic;font-size:.92rem;line-height:1.7}
+.letter .date{margin-bottom:2.4rem}
+.letter p.line{font-style:italic;font-size:.95rem;margin-bottom:1.3rem}
+.letter .sign{margin-top:2rem;font-family:var(--script);font-size:1.8rem;line-height:1.4}
+#end{text-align:center;padding-bottom:12vh;font-family:var(--script);font-size:1.6rem}
+
+@media (max-width:700px){
+  #decor img{opacity:.9;max-width:38vw}
+}
+@media (prefers-reduced-motion:reduce){
+  #decor,#page{transition-duration:.01s}
+  body.ready .hero > *{animation:none}
+}

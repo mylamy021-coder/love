@@ -1,0 +1,25 @@
+{
+  "title": "Nobody loves you more than me",
+  "credit": "Letters written by Hujaifa",
+  "subtitle": "A collection of letters",
+  "ending": "To be continued...",
+  "newestFirst": false,
+  "decor": [
+    {"src":"assets/1.jpg","top":"30px","left":"6%","width":"230px","rotate":-8,"polaroid":true},
+    {"src":"assets/2.jpg","top":"60px","right":"5%","width":"200px","rotate":6,"polaroid":true},
+    {"src":"assets/3.jpg","top":"520px","left":"2%","width":"260px","rotate":10},
+    {"src":"assets/4.jpg","top":"480px","right":"3%","width":"240px","rotate":-5}
+  ],
+  "letters": [
+    {
+      "place": "Dhaka",
+      "date": "2 October 2026, Friday",
+      "body": [
+        "Dearest ...,",
+        "Ekhane tomar prothom chithi likho.",
+        "Notun chithi likhle ei file-e ekta notun object add koro."
+      ],
+      "sign": "Hujaifa"
+    }
+  ]
+}
