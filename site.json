@@ -1,0 +1,15 @@
+{
+  "title": "Nobody loves you more than me",
+  "author": "Hujaifa",
+  "credit": "Letters written by Hujaifa",
+  "subtitle": "A collection of letters",
+  "ending": "To be continued...",
+  "siteUrl": "https://mdhujaifatowhid.github.io/REPO-NAME",
+  "defaultCard": "assets/card.png",
+  "decor": [
+    {"src":"assets/1.jpg","top":"30px","left":"4%","width":"200px","rotate":-8,"polaroid":true},
+    {"src":"assets/2.jpg","top":"50px","right":"4%","width":"180px","rotate":6,"polaroid":true},
+    {"src":"assets/3.jpg","top":"260px","left":"1%","width":"190px","rotate":10},
+    {"src":"assets/4.jpg","top":"250px","right":"1%","width":"190px","rotate":-5}
+  ]
+}
