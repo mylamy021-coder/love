@@ -1,8 +1,6 @@
 :root{
-  --paper:#f2e9dd;
-  --ink:#8c1d2c;
-  --ink-soft:#a8434f;
-  --shadow:rgba(60,35,20,.28);
+  --paper:#f2e9dd; --ink:#8c1d2c; --ink-soft:#a8434f;
+  --card:rgba(255,250,242,.6); --shadow:rgba(60,35,20,.25);
   --script:'Yellowtail','Hind Siliguri',cursive;
   --body:'Poppins','Hind Siliguri',sans-serif;
 }
@@ -13,52 +11,48 @@ body{
   background-image:
     repeating-linear-gradient(0deg,rgba(120,90,60,.035) 0 1px,transparent 1px 3px),
     repeating-linear-gradient(90deg,rgba(120,90,60,.035) 0 1px,transparent 1px 3px);
-  color:var(--ink);
-  font-family:var(--body);
-  line-height:2;
-  overflow-x:hidden;
-  min-height:100vh;
+  color:var(--ink);font-family:var(--body);line-height:1.9;overflow-x:hidden;min-height:100vh;
 }
-/* slow entrance: everything fades in gradually */
-body:not(.ready) #decor,
+button,input,textarea{font:inherit;color:inherit}
+#page{transition:opacity 3.2s ease}
 body:not(.ready) #page{opacity:0}
-#decor,#page{transition:opacity 3.2s ease}
-body.ready #decor,body.ready #page{opacity:1}
-body.ready .hero > *{animation:rise 2.8s ease both}
-body.ready .hero > :nth-child(2){animation-delay:.6s}
-body.ready .hero > :nth-child(3){animation-delay:1.2s}
+body.ready #page{opacity:1}
+body.ready .hero > :not(#decor){animation:rise 2.8s ease both}
+body.ready #subtitle{animation-delay:1.2s}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
-#decor{position:absolute;inset:0;height:100%;pointer-events:none;z-index:0}
-#decor img{
-  position:absolute;
-  box-shadow:0 8px 18px var(--shadow);
-  background:#fff;
-}
-#decor img.polaroid{padding:8px 8px 8px;}
-#page{position:relative;z-index:1}
-
-.hero{text-align:center;padding:12vh 1.5rem 8vh}
+.hero{position:relative;text-align:center;padding:12vh 1.5rem 8vh}
+.hero > :not(#decor){position:relative;z-index:1}
+#decor{position:absolute;inset:0;pointer-events:none;z-index:0}
+#decor img{position:absolute;box-shadow:0 8px 18px var(--shadow);background:#fff}
+#decor img.polaroid{padding:8px}
 #credit{font-size:.9rem;line-height:1.7}
-#title{
-  font-family:var(--script);font-weight:400;
-  font-size:clamp(3rem,9vw,6rem);line-height:1.15;
-  margin:2.2rem auto 1.4rem;max-width:11em;
-}
-#subtitle{font-weight:600;font-size:.95rem;letter-spacing:.04em}
+#title{font-family:var(--script);font-weight:400;font-size:clamp(3rem,9vw,6rem);line-height:1.15;margin:2.2rem auto 1.4rem;max-width:11em}
+#subtitle{font-weight:600;font-size:.95rem}
 
-#letters{max-width:640px;margin:0 auto;padding:6vh 1.5rem 14vh}
-.letter{margin-bottom:12vh}
-.letter .place,.letter .date{font-style:italic;font-size:.92rem;line-height:1.7}
-.letter .date{margin-bottom:2.4rem}
-.letter p.line{font-style:italic;font-size:.95rem;margin-bottom:1.3rem}
-.letter .sign{margin-top:2rem;font-family:var(--script);font-size:1.8rem;line-height:1.4}
+#feed{max-width:640px;margin:0 auto;padding:2vh 1rem 10vh;display:flex;flex-direction:column;gap:2.5rem}
+.post{background:var(--card);border:1px solid rgba(140,29,44,.22);border-radius:6px;box-shadow:0 6px 16px var(--shadow);padding:1.4rem 1.5rem 1rem}
+.post.target{outline:2px solid var(--ink-soft);outline-offset:4px}
+.meta{display:flex;align-items:center;gap:.8rem;margin-bottom:1.2rem}
+.avatar{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;font-family:var(--script);font-size:1.5rem;line-height:1}
+.who{line-height:1.4;font-size:.9rem;font-weight:600}
+.when{display:block;font-weight:400;font-style:italic;font-size:.8rem}
+.text p{font-style:italic;font-size:.95rem;margin-bottom:1rem}
+.post img.photo{display:block;width:100%;margin:.4rem 0 1rem;border:8px solid #fffaf2;box-shadow:0 5px 12px var(--shadow)}
+.sign{font-family:var(--script);font-size:1.7rem;line-height:1.4;margin-bottom:.6rem}
+.actions{display:flex;gap:.4rem;flex-wrap:wrap;border-top:1px dashed rgba(140,29,44,.35);padding-top:.5rem}
+.actions button{background:none;border:0;cursor:pointer;padding:.3rem .7rem;font-size:.85rem;font-weight:500;border-radius:4px}
+.actions button:hover,.actions button:focus-visible{background:rgba(140,29,44,.08);outline:none}
+.comments{display:none;padding-top:.6rem}
+.post.open .comments{display:block}
+.c{font-size:.88rem;line-height:1.6;margin-bottom:.8rem}
+.c b{font-weight:600}.c small{font-style:italic;margin-left:.4rem;opacity:.8}
+.c p{white-space:pre-wrap;word-break:break-word}
+.cform{display:grid;gap:.5rem;margin-top:.8rem}
+.cform input,.cform textarea{background:rgba(255,255,255,.55);border:1px solid rgba(140,29,44,.35);border-radius:4px;padding:.45rem .6rem;font-size:.88rem;resize:vertical}
+.cform button{justify-self:end;background:var(--ink);color:var(--paper);border:0;border-radius:4px;padding:.4rem 1.1rem;cursor:pointer;font-size:.85rem}
+.cform button:disabled{opacity:.5}
+.note{font-size:.8rem;font-style:italic}
 #end{text-align:center;padding-bottom:12vh;font-family:var(--script);font-size:1.6rem}
-
-@media (max-width:700px){
-  #decor img{opacity:.9;max-width:38vw}
-}
-@media (prefers-reduced-motion:reduce){
-  #decor,#page{transition-duration:.01s}
-  body.ready .hero > *{animation:none}
-}
+@media (max-width:760px){#decor img{max-width:30vw;opacity:.9}}
+@media (prefers-reduced-motion:reduce){#page{transition-duration:.01s}body.ready .hero > :not(#decor){animation:none}}
